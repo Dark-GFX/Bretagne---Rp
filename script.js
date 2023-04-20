@@ -10,4 +10,4 @@ function typeText() {
   }
 }
 
-let timer = setInterval(typeText, 500);
+let timer = setInterval(typeText, 100);
