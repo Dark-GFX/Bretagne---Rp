@@ -83,6 +83,13 @@ body {
     text-align: center;
   }
 
+  .call-to-action2 {
+    background-color: #5a0000;
+    color: #fff;
+    padding: 1rem;
+    text-align: center;
+  }
+
 .call-to-action {
     background-color: #111111;
     color: #fff;
@@ -209,3 +216,48 @@ body {
     font-weight: bold;
     color: #ffffff;
     }
+
+
+
+
+
+  
+
+
+
+    .saison {
+      font-size: 50px;
+      display: inline-block;
+      background: linear-gradient(-20deg, #ffffff, #707070, #505050, #252525, #000000, #252525, #505050, #707070);
+      background-size: 400%;
+      color: transparent;
+      background-clip: text;
+      -webkit-background-clip: text;
+      animation: wave 3s ease-in-out infinite;
+      position: relative; left: 20px;
+      margin: 20px;
+    }
+    
+    @keyframes wave {
+      0% {
+        background-position: 0 0;
+      }
+      100% {
+        background-position: 400% 0;
+      }
+    }
+
+    .saison-c {
+      color: #5a0000;
+      font-size: 50px;
+    }
+
+    .saison-Save {
+      font-size:  50px;
+    }
+    
+    
+    
+    
+    
+    
