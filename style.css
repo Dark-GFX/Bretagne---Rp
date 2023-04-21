@@ -6,14 +6,7 @@
 
 body {
     font-family: Arial, sans-serif;
-    margin: 0;
-  }
-  
-
-body {
-    margin: 0;
     padding: 0;
-    font-family: Arial, sans-serif;
 }
 
 
@@ -27,7 +20,6 @@ body {
 
 
 .hero {
-    background-image: url("https://images.unsplash.com/photo-1534375971782-6e26b10d6748");
     background-size: cover;
     background-position: center;
     background-color: transparent;
@@ -196,13 +188,6 @@ body {
     background-color: hsl(204, 59%, 16%);
     border-radius: 20px;
   }
-
-
-
-
-
-
-
   
   .container {
     display: flex;
@@ -255,3 +240,58 @@ body {
     .saison-Save {
       font-size:  50px;
     }
+
+
+
+
+
+
+.rating {
+  display: flex;
+  flex-direction: row-reverse;
+  justify-content: center;
+  align-items: center;
+}
+
+.rating input[type="radio"] {
+  display: none;
+}
+
+.rating label {
+  font-size: 30px;
+  color: #ddd;
+  cursor: pointer;
+  transition: color 0.2s;
+  cursor: default;
+}
+
+
+.rating input[type="radio"]:checked ~ label {
+  color: #FFD700;
+}
+
+.result {
+  margin-top: 20px;
+}
+
+.call-to-star {
+  background-color: #111111;
+  color: #fff;
+  padding: 2rem;
+  text-align: center;
+  margin-top: 0px;
+}
+
+#note_btn {
+    cursor: pointer;
+    width: 50px;
+    margin-left: calc(50% - 25px);
+    border-radius: 5px;
+    transform: 1s;
+    padding: 5px;
+}
+
+#note_btn:hover {
+    text-decoration: underline;
+    background-color: rgb(51, 51, 51);
+}

@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Noter le site</title>
+    <style>
+        body {
+            text-align: center;
+            font-family: Arial, sans-serif;
+            background-color: #111111;
+            color: white;
+        }
+
+        input, button{
+            outline: none;
+            border-radius: 10px;
+            padding: 5px;
+            margin: 10px;
+            border: none;
+            font-size: 150%;
+        }
+        input[type='submit'], button{
+            cursor: pointer;
+            background-color: #b4b4b4;
+            transition: .1s ease-in-out;
+        }
+        input[type='submit'], button:hover{
+            background-color: #ffffff;
+        }
+
+        .rating {
+          display: flex;
+          flex-direction: row-reverse;
+          justify-content: center;
+          align-items: center;
+        }
+
+        .rating p {
+          font-size: 30px;
+          color: #ddd;
+          cursor: pointer;
+          transition: color 0.2s;
+          cursor: default;
+        }
+
+        .star:hover {
+            color: #FFD700;
+        }
+        
+        .rating input[type="radio"] {
+          display: none;
+        }
+        
+        .rating p {
+          font-size: 50px;
+          color: #ddd;
+          cursor: pointer;
+          transition: 0.2s;
+        }
+        
+        
+        p.checked {
+          color: #FFD700;
+        }
+    </style>
+</head>
+<body>
+    <h1>Noter le site :</h1>
+    <div class="rating">
+        <p class="star" id="star5">&#9733;</p>
+        <p class="star" id="star4">&#9733;</p>
+        <p class="star" id="star3">&#9733;</p>
+        <p class="star" id="star2">&#9733;</p>
+        <p class="star" id="star1">&#9733;</p>
+    </div>
+    <button onclick="submit()">Envoyer</button>
+    <script>
+        if(localStorage.getItem("note")){
+           alert("Vous avez déjà noté le site !")
+           close()
+        }
+
+        const stars = document.getElementsByClassName("star")
+
+        let value 
+
+        function unCheckAll(){
+            for(const star of document.getElementsByClassName("star")){
+                star.classList.remove("checked")
+            }
+        }
+
+        function chageValue(number){
+            value = parseInt(number)
+            unCheckAll()
+            for(let i = 0;i < value; i++){
+                document.getElementById("star"+(i+1)).classList.add("checked")
+                console.log(document.getElementById("star"+(i+1)))
+            }
+        }
+
+        for(const star of stars){
+            star.addEventListener("click", ()=>{
+                chageValue(star.id.replace("star", ""))
+            })
+        }
+
+        function submit(){
+            if(!value){
+                alert("Séléctionnez un nombre !")
+            }else {
+                fetch("./api/note/post", {
+                    method: "POST",
+                    headers: {
+                        'Content-Type': 'application/json'
+                    },
+                    body: JSON.stringify({"number": value})
+                }).then(rep => rep.json()).then(rep => {
+                    if(rep.next){
+                        localStorage.setItem("note", value)
+                        close()
+                    }else {
+                        alert("Erreur : "+rep.message)
+                    }
+                })
+                
+            }
+        }
+    </script>
+</body>
+</html>
